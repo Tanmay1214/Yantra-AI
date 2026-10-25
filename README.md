@@ -5,6 +5,8 @@
 
 A historical passage might describe a clock, a building, or a way of storing water. Reading it tells us something. Being able to explore it, change a setting, and ask “why?” can help us understand much more.
 
+**DEMO VIDEO** **https://youtu.be/TR4DvjZ78wk**
+
 **YANTRA is an interactive heritage museum—and the foundation for the text-to-3D experience we want to build.** Today, you can explore a Japanese mechanical clock and an Indian stepwell, run simple experiments, and ask an AI guide to explain or operate them.
 
 > **The idea:** Bring a historical description. Explore possible interpretations in 3D. Ask questions. Challenge the answer. Follow the evidence.
