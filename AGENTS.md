@@ -25,7 +25,7 @@ Build an explorable digital museum object inspired by Mechanica Museum: detailed
 The implemented variant is an **early single-foliot, weight-driven lantern clock**, following the JCWA example. It uses a rotating chapter ring and fixed pointer, a crown-wheel/verge escapement, and manually adjustable foliot weights. It is a procedural explanatory reconstruction, not a scan, an authenticated replica, or a validated force simulation.
 
 - Start historical investigation with [JCWA](https://www.jcwa.or.jp/en/etc/wadokei.html) and [Seiko Museum](https://museum.seiko.co.jp/en/collections/traditional_Japanese_clock/collect001/). Seiko's cited object is a **double-foliot comparison**, not evidence for adding its selector to this single-foliot model.
-- Use primary or authoritative sources for new claims. Existing escapement sources are in `src/inventory.ts` and the README bibliography. Consult Kyoto University Museum resources when relevant, but no applicable Kyoto mechanism source is currently established; do not imply otherwise.
+- Use primary or authoritative sources for new claims. Existing escapement sources are in `src/inventory.ts` and `docs/WADOKEI.md`. Consult Kyoto University Museum resources when relevant, but no applicable Kyoto mechanism source is currently established; do not imply otherwise.
 - Preserve the distinction between a documented operating principle, inferred geometry, and newly designed exhibit features. Record source and reconstruction/dimension status in each component's inventory evidence and update the README when claims change.
 - Never present invented measurements, tooth counts, ratios, inscriptions, material choices, or linkages as historical facts. Investigate, leave unspecified, or explicitly label an approximation. A source supporting a general principle does not authenticate the modeled geometry.
 - Do not assume every Wadokei has two foliots. Do not add automatic day/night switching, a pendulum, a balance spring, or an alarm without evidence for an explicitly selected variant and a documented scope change. Explain any deliberate combination of designs.
@@ -49,7 +49,7 @@ Application paths throughout this document are relative to this project root.
 | `tests/simulation.test.ts` | Node test runner via `tsx`: mechanical invariants and inventory evidence |
 | `e2e/exhibit.spec.ts` | Playwright interaction tests, WebGL state assertions and screenshots |
 | `scripts/production-smoke.mjs` | Built-site smoke check and multi-angle screenshots |
-| `README.md`, `VERIFICATION.md` | User-facing architecture/provenance/limits and dated results actually obtained |
+| `README.md`, `docs/WADOKEI.md`, `VERIFICATION.md` | Project overview, detailed clock provenance/limits, and dated results actually obtained |
 
 Preserve these boundaries. Keep physics/kinematics independent of React and UI text in the inventory where shared. Avoid new duplicate stores, parallel model loaders, unexplained constants, unnecessary abstractions, or framework migrations. Existing scene/UI files are large: extract cohesive components when a task warrants it rather than expanding unrelated responsibilities or performing a wholesale rewrite.
 
