@@ -6,11 +6,13 @@ The homepage uses the existing charcoal, brass and sandstone visual language, re
 
 `src/museum.ts` contains the configurable product name, descriptor and exhibit routes. `src/main.tsx` dispatches between separately loaded page entries; `src/home/HomePage.tsx` and `home.css` own the homepage, and `ExhibitPreviews.tsx` connects the existing scenes. No router package or new dependency is required. Static hosts must rewrite these document routes to `index.html`, as Vite does in development and preview.
 
-**Chand Baori** is an environmental study built around the authorised CC BY 4.0 MagicaVoxel model by siddharthbandhu. It includes local 3D exploration, water-elevation and depth-temperature experiments, six view modes, source-mesh inspection, versioned scenario comparisons, and a local Gemma 4 tool adapter.
+**Chand Baori** is an environmental study built around the authorised CC BY 4.0 MagicaVoxel model by siddharthbandhu. It includes local 3D exploration, water-elevation and depth-temperature experiments, six view modes, source-mesh inspection and versioned scenario comparisons. Both exhibits include a compact **Guide** tab powered by hosted **Gemma 4 through the Gemini API**.
 
-Run `npm ci`, then `npm run dev`. Open `http://127.0.0.1:5173/`. The command starts Vite and the loopback agent service. All environmental controls work without Ollama. To enable the guide, install Ollama from its official website, run `ollama serve` if needed, then `ollama pull gemma4:e2b`. The app discovers actual installed Gemma 4 tags; it does not claim that inference is available before connection succeeds.
+Run `npm ci`, copy `.env.example` to `.env.local`, and set `GEMINI_API_KEY` in that local file. Then run `npm run dev` and open `http://127.0.0.1:5173/`. The command starts Vite and the server-side guide adapter. The configured model is `gemma-4-26b-a4b-it`; `gemma-4-31b-it` is also supported when available to the key. No local AI runtime is used and no Gemini-model fallback is substituted. All manual exhibit controls remain usable if the API is unavailable. Never prefix the credential with `VITE_`, put it in frontend code, or commit `.env.local`.
 
-Read [Chand Baori setup, provenance, equations and limitations](docs/CHAND_BAORI.md) and [executed verification](docs/CHAND_BAORI_VERIFICATION.md). `npm test` and `npm run test:e2e` now cover both exhibits. For production, run `npm run build`, `npm run preview -- --port 4173 --strictPort`, and `npm run agent` in a separate terminal if the local guide is needed.
+Read [the guide architecture and controls](docs/GEMMA_GUIDE.md) and [the screen-recording timeline](docs/DEMO_SHOWCASE.md). In either exhibit open **Guide**, choose one of the suggested questions or type a request, and press Enter. Shift+Enter adds a new line. Verified numerical results and applied changes appear under the answer; sources and raw tool details stay collapsed. Conversation context lasts for the current exhibit page visit.
+
+Read [Chand Baori setup, provenance, equations and limitations](docs/CHAND_BAORI.md) and [executed verification](docs/CHAND_BAORI_VERIFICATION.md). `npm test` and `npm run test:e2e` cover both exhibits. For production preview, run `npm run build`, `npm run preview -- --port 4173 --strictPort`, and `npm run agent` in a separate terminal. The frontend can be static, but the guide requires a Node backend holding the server secret. The supplied adapter binds to loopback for development/demo use; a public deployment needs an authenticated, rate-limited backend and same-origin routing rather than exposing this development service directly.
 
 `npm run test:e2e` covers homepage entry/return navigation, actual preview assets, phone layout, unavailable paths and both exhibits’ interactions. Production checks: `node scripts/home-production-smoke.mjs` and the exhibit smoke scripts target the preview on port 4173. See [homepage verification](docs/HOMEPAGE_VERIFICATION.md) for checks actually run. The original Wadokei documentation follows.
 
@@ -27,7 +29,7 @@ npm install
 npm run dev
 ```
 
-Open the URL printed by Vite (normally http://127.0.0.1:5173). No accounts or API keys are needed. For production: `npm run build`, then `npm run preview`. `dist/` is a static site and can be served from a standard static host. Optional Google Fonts have local serif/sans fallbacks. The model, materials and lighting require no remote assets.
+Open the URL printed by Vite (normally http://127.0.0.1:5173). Manual clock controls need no accounts or API keys; the optional Guide uses the server-side API setup above. For production: `npm run build`, then `npm run preview`. `dist/` is a static frontend; the Guide additionally needs its Node service. Optional Google Fonts have local serif/sans fallbacks. The clock model, materials and lighting require no remote assets.
 
 ## Controls
 

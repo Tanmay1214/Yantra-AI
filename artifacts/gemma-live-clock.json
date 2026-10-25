@@ -1,0 +1,111 @@
+{
+  "provider": "Gemini API",
+  "realInference": true,
+  "section": "clock",
+  "complete": true,
+  "checkedAt": "2026-10-25T08:45:45.462Z",
+  "results": [
+    {
+      "question": "Pause the clock, open it and show me the escapement.",
+      "seconds": 6.2,
+      "model": "gemma-4-26b-a4b-it",
+      "tools": [
+        {
+          "name": "get_simulation_state",
+          "args": {},
+          "summary": "Running · beat 0.94 s · weights 0.76 model units."
+        },
+        {
+          "name": "set_clock_running",
+          "args": {
+            "running": false
+          },
+          "summary": "Clock paused · the connected movement is held."
+        },
+        {
+          "name": "set_view_mode",
+          "args": {
+            "mode": "interior"
+          },
+          "summary": "View: interior."
+        },
+        {
+          "name": "inspect_component",
+          "args": {
+            "isolate": true,
+            "component_id": "escape"
+          },
+          "summary": "Inspecting Crown escape wheel · 15 teeth · isolated."
+        }
+      ],
+      "explanation": "The clock has been paused and the interior revealed. I have isolated the crown escape wheel, which works with the verge pallets to regulate the movement through alternating impulses and releases."
+    },
+    {
+      "question": "Start the clock. Move the foliot weights outward to 0.95 and explain the change.",
+      "seconds": 4.473,
+      "model": "gemma-4-26b-a4b-it",
+      "tools": [
+        {
+          "name": "get_simulation_state",
+          "args": {},
+          "summary": "Paused · beat 0.94 s · weights 0.76 model units."
+        },
+        {
+          "name": "set_clock_running",
+          "args": {
+            "running": true
+          },
+          "summary": "Clock started · the weight, train and display run together."
+        },
+        {
+          "name": "set_foliot_weights",
+          "args": {
+            "distance": 0.95
+          },
+          "summary": "Weights 0.95 model units · beat 0.94 → 1.15 s."
+        }
+      ],
+      "explanation": "The clock is now running. Moving the weights further from the pivot increases the rotational inertia, which slows down the beat of the foliot."
+    },
+    {
+      "question": "Walk me through the power path.",
+      "seconds": 7.341,
+      "model": "gemma-4-26b-a4b-it",
+      "tools": [
+        {
+          "name": "get_simulation_state",
+          "args": {},
+          "summary": "Running · beat 1.15 s · weights 0.95 model units."
+        },
+        {
+          "name": "show_power_path",
+          "args": {
+            "step": 0
+          },
+          "summary": "Power path · A small descent. A day of time."
+        }
+      ],
+      "explanation": "The power path begins with the weight, which provides the energy to drive the gears. I will now walk you through each stage of the transmission."
+    },
+    {
+      "question": "Show the next step.",
+      "seconds": 5.441,
+      "model": "gemma-4-26b-a4b-it",
+      "tools": [
+        {
+          "name": "get_simulation_state",
+          "args": {},
+          "summary": "Running · beat 1.15 s · weights 0.95 model units."
+        },
+        {
+          "name": "show_power_path",
+          "args": {
+            "step": 1
+          },
+          "summary": "Power path · Motion travels through the train."
+        }
+      ],
+      "explanation": "The motion travels through the gear train, where several stages multiply the rotation. Each meshing pair of gears turns in the opposite direction to the one before it."
+    }
+  ]
+}

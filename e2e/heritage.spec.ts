@@ -3,6 +3,7 @@ import { DEFAULT, outputs } from "../src/heritage/environment";
 test("actual Chand Baori geometry, water, thermal profile, modes, scenario comparison and mobile layout", async ({
   page,
 }) => {
+  await page.route("**/api/heritage/status", r => r.fulfill({ json: { ready: false, model: null, instructions: "Test fixture: hosted provider unavailable." } }));
   const errors: string[] = [];
   page.on("pageerror", (e) => {
     errors.push(e.message);
@@ -169,7 +170,7 @@ test("actual Chand Baori geometry, water, thermal profile, modes, scenario compa
   );
   await expect(page.locator(".evidence-key")).toContainText("No weather");
   await page.getByRole("tab", { name: "Guide", exact: true }).click();
-  await expect(page.locator(".connection")).toContainText("Gemma 4 offline");
+  await expect(page.locator(".yg-connection")).toContainText("Guide unavailable");
   await expect(
     page.getByRole("button", { name: "Ask Gemma", exact: true }),
   ).toBeDisabled();
@@ -192,7 +193,7 @@ test("missing asset recovery and explicitly mocked agent transport preserve dete
     r.fulfill({
       json: {
         ready: true,
-        models: ["gemma4:test-fixture"],
+        model: "gemma-4-test-fixture",
         instructions: "TEST FIXTURE — not actual inference",
       },
     }),
@@ -203,6 +204,7 @@ test("missing asset recovery and explicitly mocked agent transport preserve dete
     await route.fulfill({
       json: {
         model: "gemma4:test-fixture",
+        exhibit: "chand-baori",
         conditions,
         explanation: "Mocked transport; deterministic result.",
         results: [
@@ -227,11 +229,11 @@ test("missing asset recovery and explicitly mocked agent transport preserve dete
   await expect(page.locator('input[type="file"]')).toHaveCount(0);
   await page.getByRole("tab", { name: "Guide", exact: true }).click();
   await page
-    .getByLabel("Ask the local guide")
+    .getByLabel("Ask the museum guide")
     .fill("Lower the water by two metres.");
   await page.getByRole("button", { name: "Ask Gemma", exact: true }).click();
-  await expect(page.locator(".guide-messages")).toContainText(
-    "set_water_level",
+  await expect(page.locator(".yg-messages")).toContainText(
+    "Water elevation: -18.0 m",
   );
   expect(
     (await page.evaluate(() => (window as any).__chand())).conditions

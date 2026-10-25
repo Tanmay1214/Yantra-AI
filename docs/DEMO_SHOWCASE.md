@@ -1,0 +1,20 @@
+# YANTRA screen-recording showcase
+
+Aim for **3–4 minutes**. Record at 1440×900 or 1920×1080 so the object and its narrow side panel remain visible. Start the app with `npm run dev`; open the homepage. Confirm **Gemma 4 · hosted API** in both Guide tabs before recording, then reload the first exhibit to start with a clean conversation. Keep `.env.local`, terminals containing credentials and account screens out of the recording.
+
+This is an **edited recording timeline**, not a promise of uninterrupted wall-clock timing. API latency and quota are account-dependent: live checks included successful default-model replies around several seconds and quota responses asking for a pause. Allow time for each answer and its applied-change notice; follow any displayed retry delay. You can trim waiting time, but do not present mocked results as live inference. See [Google's quota guidance](https://ai.google.dev/gemini-api/docs/rate-limits) before recording if you need higher sustained throughput.
+
+| Time | What to show and do | Suggested narration |
+| --- | --- | --- |
+| 0:00–0:15 | Homepage: briefly rotate each actual 3D preview, then enter Wadokei. | “YANTRA lets you investigate historical engineering, from mechanical timekeeping to water architecture.” |
+| 0:15–0:40 | Open **Guide**. Ask: **“Pause the clock, open it and show me the escapement.”** Wait for Interior view, paused movement and selected crown wheel. | “Gemma understands the exhibit and uses approved tools to act on it. This response changed the real clock controls.” |
+| 0:40–1:05 | Ask: **“Start the clock. Move the foliot weights outward to 0.95 and explain the change.”** Point to the verified beat-period comparison and moving regulator. | “The calculation comes from the clock model. Moving the weights changes its illustrative rate; Gemma explains the returned result.” |
+| 1:05–1:25 | Ask: **“Walk me through the power path.”** Then **“Show the next step.”** Briefly rotate the scene. | “The same guide can take us from the falling weight into the transmission train.” |
+| 1:25–1:40 | Use the wordmark to return home, then enter Chand Baori. | “The guide also understands a completely different kind of engineering system.” |
+| 1:40–2:00 | Open **Guide**. Choose **“Lower the water by two metres.”** Wait for Water view. | “Gemma calls the water-level tool. The waterline and the numerical state change together. This is an illustrative level, not today's groundwater reading.” |
+| 2:00–2:25 | Ask: **“Show the estimated temperature at twelve metres depth.”** Wait for the thermal view. Point to the verified °C value and depth marker. | “The answer is calculated by our deterministic depth model and visualised in the scene. It is an estimate, not a site measurement.” |
+| 2:25–2:50 | Ask: **“Compare my two saved scenarios.”** The default saved scenarios are baseline and hot summer. Optionally open **Compare** to show their retained inputs and curves, then return to Guide. | “Scenarios preserve their inputs, so we can compare a hypothetical hotter case rather than inventing a historical climate.” |
+| 2:50–3:15 | Ask: **“Which values are measured, and what assumptions are we using?”** Open **Sources & tool details** on the answer. Show the model ID and one real function result/source link. | “Gemma interprets and explains; bounded tools calculate and operate. Sources, reconstruction and simulation limits remain visible.” |
+| 3:15–3:30 | Close the details, return to the homepage, leave both exhibits visible. | “Two interactive heritage studies, one guide, and experiments that can be inspected and repeated.” |
+
+If you need a two-minute cut, omit the power-path follow-up and the scenario-panel detour. Keep one clock action, one water action, one thermal result and the evidence/limitations moment. Avoid spending the recording on setup or opening every control. If API quota fails, show the truthful unavailable message and manual controls; re-record the inference segment after access recovers instead of faking it.

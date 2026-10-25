@@ -117,39 +117,24 @@ test("geometry area is labelled and withheld after water changes; invalid source
   assert.equal((executeTool(ctx,'set_water_level',{level_m:-12}).result as {surfaceArea_m2:null}).surfaceArea_m2,null);
   assert.throws(()=>executeTool(ctx,'get_historical_sources',{topic:42}));
 });
-test("agent orchestration validates a mocked model plan and is atomic on invalid calls", async () => {
-  const context = { conditions: { ...DEFAULT }, scenarios: [] };
-  const reply = await runGuide(
-    { question: "Lower water two metres", model: "gemma4:e2b", context },
-    async () => ({
-      message: {
-        content: JSON.stringify({
-          calls: [
-            { name: "set_water_level", args: { level_m: -18 } },
-            { name: "get_temperature_profile", args: {} },
-          ],
-        }),
-      },
-    }),
-  );
-  assert.equal(reply.conditions.waterLevel, -18);
-  assert.equal(reply.results.length, 2);
+test("hosted native calls consume tool results and reject invalid plans atomically", async () => {
+  const context = { conditions: { ...DEFAULT }, scenarios: [], view: { mode: "Explore", camera: "Overview" } };
+  let count = 0;
+  const reply = await runGuide({ exhibit: "chand-baori", question: "Lower water two metres", context }, async (request) => {
+    count++;
+    if (count === 1) return { candidates: [{ content: { parts: [{ functionCall: { name: "set_water_level", args: { level_m: -18 } } }] } }] };
+    assert.ok(JSON.stringify(request.contents).includes('functionResponse'));
+    assert.ok(JSON.stringify(request.contents).includes('-18'));
+    return { candidates: [{ content: { parts: [{ text: "Water is now at -18 metres in this illustrative scenario." }] } }] };
+  });
+  assert.equal(reply.results[1].name, "set_water_level");
+  assert.match(reply.explanation, /-18/);
   assert.equal(context.conditions.waterLevel, -16);
-  await assert.rejects(() =>
-    runGuide(
-      { question: "Invalid", model: "gemma4:e2b", context },
-      async () => ({
-        message: {
-          content: JSON.stringify({
-            calls: [
-              { name: "set_water_level", args: { level_m: -17 } },
-              { name: "set_water_level", args: { level_m: 5 } },
-            ],
-          }),
-        },
-      }),
-    ),
-  );
+  await assert.rejects(() => runGuide({ exhibit: "chand-baori", question: "Invalid", context }, async () => ({ candidates: [{ content: { parts: [
+    { functionCall: { name: "set_water_level", args: { level_m: -17 } } },
+    { functionCall: { name: "set_water_level", args: { level_m: 5 } } },
+  ] } }] })));
+  assert.equal(context.conditions.waterLevel, -16);
 });
 test("source-triangle raster encloses a basin, excludes walls and rejects open boundaries", () => {
   const group = new THREE.Group();

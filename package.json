@@ -8,7 +8,7 @@
     "agent": "node --import tsx server/heritage-server.ts",
     "build": "tsc -b && tsc -p tsconfig.server.json && vite build",
     "preview": "vite preview --host 127.0.0.1",
-    "test": "node --import tsx --test tests/simulation.test.ts tests/environment.test.ts",
+    "test": "node --import tsx --test tests/simulation.test.ts tests/environment.test.ts tests/guide.test.ts",
     "test:e2e": "playwright test"
   },
   "dependencies": {

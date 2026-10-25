@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
   ArrowDown,
@@ -6,18 +6,15 @@ import {
   ArrowUpRight,
   BookOpen,
   Box,
-  Check,
   ChevronRight,
   Compass,
   Droplets,
   Layers,
-  MessageCircle,
   Pause,
   Play,
   Plus,
   RotateCcw,
   Save,
-  Send,
   SlidersHorizontal,
   Thermometer,
   X,
@@ -47,6 +44,8 @@ import {
 } from "./environment";
 import { useMonumentAsset } from "./useMonumentAsset";
 import "./heritage.css";
+import { GuidePanel } from "../guide/GuidePanel";
+import type { WellContext } from "../guide/tools";
 import { MUSEUM, EXHIBIT_PATHS } from "../museum";
 const fmt = (v: number) => v.toFixed(1);
 const modes: ViewMode[] = [
@@ -260,87 +259,6 @@ function Heatmap({ c }: { c: Conditions }) {
     </div>
   );
 }
-interface GuideResult {
-  model: string;
-  explanation: string;
-  conditions: Conditions;
-  results: {
-    name: string;
-    args: unknown;
-    result: unknown;
-    conditions: Conditions;
-  }[];
-}
-function VerifiedResult({ value }: { value: unknown }) {
-  const v = value as Record<string, unknown>;
-  if (
-    Array.isArray(value) &&
-    value.length &&
-    typeof value[0].temperature === "number"
-  ) {
-    const top = value[0],
-      bottom = value[value.length - 1];
-    return (
-      <p className="verified-answer">
-        Estimated air is {fmt(top.temperature)} °C at {fmt(top.depth)} m and{" "}
-        {fmt(bottom.temperature)} °C at {fmt(bottom.depth)} m. The difference is{" "}
-        {fmt(top.temperature - bottom.temperature)} °C. These are outputs of the
-        configured depth model, not site measurements. The profile approaches
-        the chosen deep asymptote; solar gain affects the surface boundary.
-      </p>
-    );
-  }
-  if (v && typeof v.sampled_C === "number")
-    return (
-      <p className="verified-answer">
-        Water elevation: {fmt(v.waterElevation_m as number)} m. At{" "}
-        {fmt(v.selectedDepth_m as number)} m depth, estimated air is{" "}
-        {fmt(v.sampled_C)} °C. Top-to-bottom difference:{" "}
-        {fmt(v.upperLowerDifference_C as number)} °C. Water temperature is
-        independently configured at {fmt(v.configuredWater_C as number)} °C. No
-        storage volume has been established.
-      </p>
-    );
-  if (v && typeof v.temperature_C === "number")
-    return (
-      <p className="verified-answer">
-        At {fmt(v.depth_m as number)} m depth, the model estimates{" "}
-        {fmt(v.temperature_C)} °C. This is a simulated estimate in the depth
-        column.
-      </p>
-    );
-  if (v && typeof v.reason === "string")
-    return <p className="verified-answer">{v.reason}</p>;
-  if (v?.facts)
-    return (
-      <div className="verified-answer">
-        {SOURCES.slice(0, 2).map((s) => (
-          <p key={s.url}>{s.detail}</p>
-        ))}
-        <p>
-          No live environmental observations are connected. Environmental inputs
-          are hypothetical.
-        </p>
-      </div>
-    );
-  if (v?.delta) {
-    const d = v.delta as Record<string, number>;
-    return (
-      <p className="verified-answer">
-        B minus A: water {fmt(d.water_m)} m; outdoor temperature{" "}
-        {fmt(d.outdoor_C)} °C; selected-depth air {fmt(d.selectedTemperature_C)}{" "}
-        °C. Compare the preserved sample depths before interpreting this
-        difference.
-      </p>
-    );
-  }
-  return (
-    <p className="verified-answer">
-      Sources are listed below. Their historical descriptions do not calibrate
-      the environmental model.
-    </p>
-  );
-}
 function HeritageApp() {
   const [c, setC] = useState<Conditions>({ ...DEFAULT }),
     [baseline, setBaseline] = useState<Conditions>({ ...DEFAULT }),
@@ -360,32 +278,15 @@ function HeritageApp() {
     [scenarioName, setScenarioName] = useState("My experiment"),
     [a, setA] = useState(0),
     [b, setB] = useState(1);
-  const [status, setStatus] = useState<{
-      ready: boolean;
-      models: string[];
-      instructions: string;
-    }>({
-      ready: false,
-      models: [],
-      instructions: "Checking local Gemma service…",
-    }),
-    [model, setModel] = useState("");
-  const [question, setQuestion] = useState(""),
-    [messages, setMessages] = useState<
-      { question: string; response?: GuideResult; error?: string }[]
-    >([]),
-    [asking, setAsking] = useState(false),
-    [notice, setNotice] = useState("");
+  const [notice, setNotice] = useState("");
   const {
     asset,
     info,
     status: assetStatus,
     loading: assetLoading,
   } = useMonumentAsset();
-  const revision = useRef(0);
   const result = outputs(c);
   const setConditions = useCallback((next: Conditions) => {
-    revision.current++;
     setC(next);
   }, []);
   function change(key: keyof Conditions, value: number) {
@@ -414,25 +315,6 @@ function HeritageApp() {
     if (-s.elevation >= 0 && -s.elevation <= c.maxDepth)
       change("sampleDepth", -s.elevation);
   }
-  async function connect() {
-    try {
-      const r = await fetch("/api/heritage/status");
-      if (!r.ok) throw new Error();
-      const s = await r.json();
-      setStatus(s);
-      setModel(s.models?.[0] ?? "");
-    } catch {
-      setStatus({
-        ready: false,
-        models: [],
-        instructions:
-          "Local agent service is unavailable. Start the app with npm run dev, or run npm run agent alongside production preview.",
-      });
-    }
-  }
-  useEffect(() => {
-    void connect();
-  }, []);
   useEffect(() => {
     try {
       localStorage.setItem("chand-scenarios-v1", JSON.stringify(scenarios));
@@ -449,7 +331,6 @@ function HeritageApp() {
       const now = performance.now(),
         days = Math.min((now - prior) / 1000, 0.2);
       prior = now;
-      revision.current++;
       setC((old) => advanceEnvironment(old, days));
     }, 100);
     const stop = () => {
@@ -483,62 +364,6 @@ function HeritageApp() {
       delete w.__chand;
     };
   }, [c, mode, asset, scenarios, area]);
-  async function ask(text = question) {
-    if (!text.trim() || asking) return;
-    setQuestion("");
-    setAsking(true);
-    setRunning(false);
-    const rev = revision.current;
-    setMessages((old) => [...old, { question: text }]);
-    try {
-      const r = await fetch("/api/heritage/guide", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          question: text,
-          model,
-          context: {
-            conditions: c,
-            scenarios,
-            geometry: {
-              surfaceArea_m2: area,
-              level_m: c.waterLevel,
-              studyDepth_m: c.maxDepth,
-              meshCount: info?.meshes.length ?? 0,
-              source: info?.file ?? "Missing local asset",
-            },
-          },
-        }),
-        signal: AbortSignal.timeout(95000),
-      });
-      const data = await r.json();
-      if (!r.ok) throw new Error(data.error || "Guide unavailable.");
-      if (rev !== revision.current)
-        throw new Error(
-          "Controls changed while Gemma was thinking. The stale result was discarded; ask again.",
-        );
-      const validated = patchConditions(c, data.conditions);
-      setConditions(validated);
-      setMessages((old) =>
-        old.map((m, i) =>
-          i === old.length - 1 ? { ...m, response: data } : m,
-        ),
-      );
-    } catch (e) {
-      setMessages((old) =>
-        old.map((m, i) =>
-          i === old.length - 1
-            ? {
-                ...m,
-                error: e instanceof Error ? e.message : "Guide request failed.",
-              }
-            : m,
-        ),
-      );
-    } finally {
-      setAsking(false);
-    }
-  }
   const comp =
     scenarios[a] && scenarios[b] ? compare(scenarios[a], scenarios[b]) : null;
   function save() {
@@ -1163,128 +988,16 @@ function HeritageApp() {
                 </div>
               </>
             )}
-            {tab === "Guide" && (
-              <>
-                <div className="section-heading">
-                  <MessageCircle size={18} />
-                  <h3>Ask Yantra</h3>
-                  <span>LOCAL GEMMA 4</span>
-                </div>
-                <div className={`connection ${status.ready ? "online" : ""}`}>
-                  <span className="status-dot" />
-                  {status.ready ? "Gemma 4 available" : "Gemma 4 offline"}
-                  <button onClick={() => void connect()}>Retry</button>
-                </div>
-                <p className="fine-print">{status.instructions}</p>
-                {status.models.length > 0 && (
-                  <select
-                    aria-label="Gemma model"
-                    value={model}
-                    onChange={(e) => setModel(e.target.value)}
-                  >
-                    {status.models.map((n) => (
-                      <option key={n}>{n}</option>
-                    ))}
-                  </select>
-                )}
-                <div className="suggested-questions">
-                  {[
-                    "Lower the water by two metres.",
-                    "Is it cooler at the bottom?",
-                    "Which values are measured?",
-                  ].map((q) => (
-                    <button
-                      key={q}
-                      onClick={() => {
-                        setQuestion(q);
-                        if (status.ready) void ask(q);
-                      }}
-                    >
-                      {q}
-                      <ArrowUpRight size={12} />
-                    </button>
-                  ))}
-                </div>
-                <div className="guide-messages" aria-live="polite">
-                  {messages.map((m, i) => (
-                    <article key={i}>
-                      <p className="visitor-question">{m.question}</p>
-                      {m.error && <p className="callout">{m.error}</p>}
-                      {m.response && (
-                        <>
-                          <small>Executed locally · {m.response.model}</small>
-                          <p>{m.response.explanation}</p>
-                          {m.response.results.map((r, j) => (
-                            <div className="tool-result" key={j}>
-                              <span className="tool-status">
-                                <Check size={13} />
-                                {r.name}
-                              </span>
-                              <VerifiedResult value={r.result} />
-                              <p className="fine-print">
-                                {r.name.startsWith("set_")
-                                  ? "Controls changed to the returned state."
-                                  : "Read-only calculation / source lookup."}
-                              </p>
-                              <details>
-                                <summary>Inspect tool result</summary>
-                                <pre>{JSON.stringify(r.result, null, 2)}</pre>
-                              </details>
-                            </div>
-                          ))}
-                          <div className="source-links">
-                            {SOURCES.map((s) => (
-                              <a
-                                key={s.url}
-                                href={s.url}
-                                target="_blank"
-                                rel="noreferrer"
-                              >
-                                {s.name}
-                                <ArrowUpRight size={11} />
-                              </a>
-                            ))}
-                          </div>
-                        </>
-                      )}
-                    </article>
-                  ))}
-                  {asking && (
-                    <p>
-                      Gemma is selecting tools; arguments will be validated
-                      before any change…
-                    </p>
-                  )}
-                </div>
-                <form
-                  className="guide-form"
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    void ask();
-                  }}
-                >
-                  <textarea
-                    aria-label="Ask the local guide"
-                    maxLength={2000}
-                    placeholder="Ask about water, shade or the evidence…"
-                    value={question}
-                    onChange={(e) => setQuestion(e.target.value)}
-                  />
-                  <button
-                    className="primary"
-                    disabled={!status.ready || asking || !question.trim()}
-                  >
-                    <Send size={14} />
-                    Ask Gemma
-                  </button>
-                </form>
-                <p className="fine-print">
-                  Gemma chooses approved tools. Numerical answers are rendered
-                  from deterministic tool results. No generated numerical prose
-                  is accepted.
-                </p>
-              </>
-            )}
+            <div hidden={tab !== "Guide"}><GuidePanel exhibit="chand-baori"
+              getContext={() => ({ conditions: c, scenarios,
+                view: { mode, camera: camera.name },
+                geometry: { surfaceArea_m2: area, level_m: c.waterLevel, studyDepth_m: c.maxDepth,
+                  meshCount: info?.meshes.length ?? 0, source: info?.file ?? "Missing local asset" } })}
+              onApply={(context) => {
+                const next = context as WellContext;
+                setConditions(next.conditions); setRunning(false); setMode(next.view.mode);
+                setCamera(old => ({ name: next.view.camera, version: old.version + 1 }));
+              }} /></div>
             {tab === "Evidence" && (
               <>
                 <span className="eyebrow">EVIDENCE & ASSUMPTIONS</span>

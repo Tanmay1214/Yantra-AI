@@ -34,6 +34,8 @@ import {
 import { byId, components, sources, tour } from "./inventory";
 import "./styles.css";
 import { MUSEUM } from "./museum";
+import { GuidePanel } from "./guide/GuidePanel";
+import type { ClockContext } from "./guide/tools";
 
 declare global {
   interface Window {
@@ -169,7 +171,9 @@ function App() {
     const key = (e: KeyboardEvent) => {
       if (
         e.target instanceof HTMLInputElement ||
-        e.target instanceof HTMLSelectElement
+        e.target instanceof HTMLSelectElement ||
+        e.target instanceof HTMLTextAreaElement ||
+        (e.target instanceof HTMLElement && e.target.isContentEditable)
       )
         return;
       if (e.code === "Space") {
@@ -454,8 +458,24 @@ function App() {
             >
               Evidence
             </button>
+            <button className={tab === "guide" ? "active" : ""} onClick={() => setTab("guide")}>Guide</button>
           </nav>
           <div className="panel-content">
+            <div hidden={tab !== "guide"} className="clock-guide-panel">
+              <GuidePanel exhibit="wadokei" getContext={() => ({
+                mode: options.mode, camera: options.camera.preset, selected: options.selected,
+                isolate: options.isolate, path: options.path, running: sim.running, radius: sim.radius,
+                speed: sim.speed, beats: sim.beats, travel: sim.travel, tourIndex,
+              })} onApply={(context) => {
+                const next = context as ClockContext;
+                if (next.resetRequested) reset();
+                sim.radius = next.radius; sim.running = next.running;
+                setLive({ ...sim }); setTourIndex(next.tourIndex); setCalibration("Guide setting");
+                setOptions(old => ({ ...old, mode: next.mode, selected: next.selected,
+                  isolate: next.isolate, path: next.path,
+                  camera: { preset: next.camera, version: old.camera.version + 1 } }));
+              }} />
+            </div>
             {tab === "explore" && (
               <>
                 {!selected ? (

@@ -1,0 +1,893 @@
+{
+  "provider": "Gemini API",
+  "realInference": true,
+  "checkedAt": "2026-10-25T08:53:22.734Z",
+  "exhibit": "chand-baori",
+  "model": "gemma-4-26b-a4b-it",
+  "results": [
+    {
+      "name": "get_simulation_state",
+      "args": {},
+      "result": {
+        "modelVersion": "chand-empirical-1.0",
+        "provenance": "hypothetical inputs / simulated estimates",
+        "waterElevation_m": -18,
+        "waterColumn_m": 6,
+        "studyBottom_m": -24,
+        "volume_m3": null,
+        "surfaceArea_m2": null,
+        "volumeReason": "No surveyed basin geometry or elevation-volume curve is available.",
+        "surface_C": 38.078460969082656,
+        "sampled_C": 28.69506893037797,
+        "selectedDepth_m": 12,
+        "lower_C": 26.601351162046296,
+        "upperLowerDifference_C": 11.47710980703636,
+        "configuredWater_C": 25,
+        "waterAirDifference_C": -2.273060420042057,
+        "profile": [
+          {
+            "depth": 0,
+            "elevation": 0,
+            "temperature": 38.078460969082656
+          },
+          {
+            "depth": 0.5,
+            "elevation": -0.5,
+            "temperature": 37.34666401303896
+          },
+          {
+            "depth": 1,
+            "elevation": -1,
+            "temperature": 36.65920439320438
+          },
+          {
+            "depth": 1.5,
+            "elevation": -1.5,
+            "temperature": 36.01339584617498
+          },
+          {
+            "depth": 2,
+            "elevation": -2,
+            "temperature": 35.40671486101897
+          },
+          {
+            "depth": 2.5,
+            "elevation": -2.5,
+            "temperature": 34.83679081860287
+          },
+          {
+            "depth": 3,
+            "elevation": -3,
+            "temperature": 34.30139672834572
+          },
+          {
+            "depth": 3.5,
+            "elevation": -3.5,
+            "temperature": 33.79844052620503
+          },
+          {
+            "depth": 4,
+            "elevation": -4,
+            "temperature": 33.325956899891
+          },
+          {
+            "depth": 4.5,
+            "elevation": -4.5,
+            "temperature": 32.882099609366115
+          },
+          {
+            "depth": 5,
+            "elevation": -5,
+            "temperature": 32.46513427262205
+          },
+          {
+            "depth": 5.5,
+            "elevation": -5.5,
+            "temperature": 32.07343158854425
+          },
+          {
+            "depth": 6,
+            "elevation": -6,
+            "temperature": 31.705460970382468
+          },
+          {
+            "depth": 6.5,
+            "elevation": -6.5,
+            "temperature": 31.35978456494974
+          },
+          {
+            "depth": 7,
+            "elevation": -7,
+            "temperature": 31.03505163417983
+          },
+          {
+            "depth": 7.5,
+            "elevation": -7.5,
+            "temperature": 30.72999327708887
+          },
+          {
+            "depth": 8,
+            "elevation": -8,
+            "temperature": 30.443417471517204
+          },
+          {
+            "depth": 8.5,
+            "elevation": -8.5,
+            "temperature": 30.174204416276886
+          },
+          {
+            "depth": 9,
+            "elevation": -9,
+            "temperature": 29.921302155504208
+          },
+          {
+            "depth": 9.5,
+            "elevation": -9.5,
+            "temperature": 29.683722468119292
+          },
+          {
+            "depth": 10,
+            "elevation": -10,
+            "temperature": 29.46053700633076
+          },
+          {
+            "depth": 10.5,
+            "elevation": -10.5,
+            "temperature": 29.250873668096556
+          },
+          {
+            "depth": 11,
+            "elevation": -11,
+            "temperature": 29.053913189366266
+          },
+          {
+            "depth": 11.5,
+            "elevation": -11.5,
+            "temperature": 28.868885942789035
+          },
+          {
+            "depth": 12,
+            "elevation": -12,
+            "temperature": 28.69506893037797
+          },
+          {
+            "depth": 12.5,
+            "elevation": -12.5,
+            "temperature": 28.531782958379807
+          },
+          {
+            "depth": 13,
+            "elevation": -13,
+            "temperature": 28.37838998331054
+          },
+          {
+            "depth": 13.5,
+            "elevation": -13.5,
+            "temperature": 28.234290618786645
+          },
+          {
+            "depth": 14,
+            "elevation": -14,
+            "temperature": 28.09892179340978
+          },
+          {
+            "depth": 14.5,
+            "elevation": -14.5,
+            "temperature": 27.971754550553033
+          },
+          {
+            "depth": 15,
+            "elevation": -15,
+            "temperature": 27.852291981451433
+          },
+          {
+            "depth": 15.5,
+            "elevation": -15.5,
+            "temperature": 27.740067283520133
+          },
+          {
+            "depth": 16,
+            "elevation": -16,
+            "temperature": 27.634641936313173
+          },
+          {
+            "depth": 16.5,
+            "elevation": -16.5,
+            "temperature": 27.53560398799531
+          },
+          {
+            "depth": 17,
+            "elevation": -17,
+            "temperature": 27.44256644563126
+          },
+          {
+            "depth": 17.5,
+            "elevation": -17.5,
+            "temperature": 27.35516576300241
+          },
+          {
+            "depth": 18,
+            "elevation": -18,
+            "temperature": 27.273060420042057
+          },
+          {
+            "depth": 18.5,
+            "elevation": -18.5,
+            "temperature": 27.195929588338316
+          },
+          {
+            "depth": 19,
+            "elevation": -19,
+            "temperature": 27.123471877490157
+          },
+          {
+            "depth": 19.5,
+            "elevation": -19.5,
+            "temperature": 27.055404157417836
+          },
+          {
+            "depth": 20,
+            "elevation": -20,
+            "temperature": 26.991460452025965
+          },
+          {
+            "depth": 20.5,
+            "elevation": -20.5,
+            "temperature": 26.931390899896144
+          },
+          {
+            "depth": 21,
+            "elevation": -21,
+            "temperature": 26.874960777948036
+          },
+          {
+            "depth": 21.5,
+            "elevation": -21.5,
+            "temperature": 26.821949584253826
+          },
+          {
+            "depth": 22,
+            "elevation": -22,
+            "temperature": 26.77215017642215
+          },
+          {
+            "depth": 22.5,
+            "elevation": -22.5,
+            "temperature": 26.7253679621847
+          },
+          {
+            "depth": 23,
+            "elevation": -23,
+            "temperature": 26.6814201390227
+          },
+          {
+            "depth": 23.5,
+            "elevation": -23.5,
+            "temperature": 26.640134979862097
+          },
+          {
+            "depth": 24,
+            "elevation": -24,
+            "temperature": 26.601351162046296
+          }
+        ],
+        "inputs": {
+          "waterLevel": -18,
+          "outdoor": 36,
+          "deep": 26,
+          "lengthScale": 8,
+          "solar": 0.6,
+          "solarGain": 4,
+          "hour": 14,
+          "waterTemperature": 25,
+          "sampleDepth": 12,
+          "maxDepth": 24,
+          "levelRate": 0,
+          "elapsedDays": 0
+        },
+        "geometry": "No local geometry supplied"
+      },
+      "summary": "Current water -18.0 m · outdoor 36.0 °C · user-configured inputs.",
+      "changed": false
+    },
+    {
+      "name": "compare_scenarios",
+      "args": {
+        "scenario_b": "hot",
+        "scenario_a": "baseline"
+      },
+      "result": {
+        "a": {
+          "name": "Baseline study",
+          "modelVersion": "chand-empirical-1.0",
+          "provenance": "hypothetical inputs / simulated estimates",
+          "waterElevation_m": -16,
+          "waterColumn_m": 8,
+          "studyBottom_m": -24,
+          "volume_m3": null,
+          "surfaceArea_m2": null,
+          "volumeReason": "No surveyed basin geometry or elevation-volume curve is available.",
+          "surface_C": 38.078460969082656,
+          "sampled_C": 28.69506893037797,
+          "selectedDepth_m": 12,
+          "lower_C": 26.601351162046296,
+          "upperLowerDifference_C": 11.47710980703636,
+          "configuredWater_C": 25,
+          "waterAirDifference_C": -2.634641936313173,
+          "profile": [
+            {
+              "depth": 0,
+              "elevation": 0,
+              "temperature": 38.078460969082656
+            },
+            {
+              "depth": 0.5,
+              "elevation": -0.5,
+              "temperature": 37.34666401303896
+            },
+            {
+              "depth": 1,
+              "elevation": -1,
+              "temperature": 36.65920439320438
+            },
+            {
+              "depth": 1.5,
+              "elevation": -1.5,
+              "temperature": 36.01339584617498
+            },
+            {
+              "depth": 2,
+              "elevation": -2,
+              "temperature": 35.40671486101897
+            },
+            {
+              "depth": 2.5,
+              "elevation": -2.5,
+              "temperature": 34.83679081860287
+            },
+            {
+              "depth": 3,
+              "elevation": -3,
+              "temperature": 34.30139672834572
+            },
+            {
+              "depth": 3.5,
+              "elevation": -3.5,
+              "temperature": 33.79844052620503
+            },
+            {
+              "depth": 4,
+              "elevation": -4,
+              "temperature": 33.325956899891
+            },
+            {
+              "depth": 4.5,
+              "elevation": -4.5,
+              "temperature": 32.882099609366115
+            },
+            {
+              "depth": 5,
+              "elevation": -5,
+              "temperature": 32.46513427262205
+            },
+            {
+              "depth": 5.5,
+              "elevation": -5.5,
+              "temperature": 32.07343158854425
+            },
+            {
+              "depth": 6,
+              "elevation": -6,
+              "temperature": 31.705460970382468
+            },
+            {
+              "depth": 6.5,
+              "elevation": -6.5,
+              "temperature": 31.35978456494974
+            },
+            {
+              "depth": 7,
+              "elevation": -7,
+              "temperature": 31.03505163417983
+            },
+            {
+              "depth": 7.5,
+              "elevation": -7.5,
+              "temperature": 30.72999327708887
+            },
+            {
+              "depth": 8,
+              "elevation": -8,
+              "temperature": 30.443417471517204
+            },
+            {
+              "depth": 8.5,
+              "elevation": -8.5,
+              "temperature": 30.174204416276886
+            },
+            {
+              "depth": 9,
+              "elevation": -9,
+              "temperature": 29.921302155504208
+            },
+            {
+              "depth": 9.5,
+              "elevation": -9.5,
+              "temperature": 29.683722468119292
+            },
+            {
+              "depth": 10,
+              "elevation": -10,
+              "temperature": 29.46053700633076
+            },
+            {
+              "depth": 10.5,
+              "elevation": -10.5,
+              "temperature": 29.250873668096556
+            },
+            {
+              "depth": 11,
+              "elevation": -11,
+              "temperature": 29.053913189366266
+            },
+            {
+              "depth": 11.5,
+              "elevation": -11.5,
+              "temperature": 28.868885942789035
+            },
+            {
+              "depth": 12,
+              "elevation": -12,
+              "temperature": 28.69506893037797
+            },
+            {
+              "depth": 12.5,
+              "elevation": -12.5,
+              "temperature": 28.531782958379807
+            },
+            {
+              "depth": 13,
+              "elevation": -13,
+              "temperature": 28.37838998331054
+            },
+            {
+              "depth": 13.5,
+              "elevation": -13.5,
+              "temperature": 28.234290618786645
+            },
+            {
+              "depth": 14,
+              "elevation": -14,
+              "temperature": 28.09892179340978
+            },
+            {
+              "depth": 14.5,
+              "elevation": -14.5,
+              "temperature": 27.971754550553033
+            },
+            {
+              "depth": 15,
+              "elevation": -15,
+              "temperature": 27.852291981451433
+            },
+            {
+              "depth": 15.5,
+              "elevation": -15.5,
+              "temperature": 27.740067283520133
+            },
+            {
+              "depth": 16,
+              "elevation": -16,
+              "temperature": 27.634641936313173
+            },
+            {
+              "depth": 16.5,
+              "elevation": -16.5,
+              "temperature": 27.53560398799531
+            },
+            {
+              "depth": 17,
+              "elevation": -17,
+              "temperature": 27.44256644563126
+            },
+            {
+              "depth": 17.5,
+              "elevation": -17.5,
+              "temperature": 27.35516576300241
+            },
+            {
+              "depth": 18,
+              "elevation": -18,
+              "temperature": 27.273060420042057
+            },
+            {
+              "depth": 18.5,
+              "elevation": -18.5,
+              "temperature": 27.195929588338316
+            },
+            {
+              "depth": 19,
+              "elevation": -19,
+              "temperature": 27.123471877490157
+            },
+            {
+              "depth": 19.5,
+              "elevation": -19.5,
+              "temperature": 27.055404157417836
+            },
+            {
+              "depth": 20,
+              "elevation": -20,
+              "temperature": 26.991460452025965
+            },
+            {
+              "depth": 20.5,
+              "elevation": -20.5,
+              "temperature": 26.931390899896144
+            },
+            {
+              "depth": 21,
+              "elevation": -21,
+              "temperature": 26.874960777948036
+            },
+            {
+              "depth": 21.5,
+              "elevation": -21.5,
+              "temperature": 26.821949584253826
+            },
+            {
+              "depth": 22,
+              "elevation": -22,
+              "temperature": 26.77215017642215
+            },
+            {
+              "depth": 22.5,
+              "elevation": -22.5,
+              "temperature": 26.7253679621847
+            },
+            {
+              "depth": 23,
+              "elevation": -23,
+              "temperature": 26.6814201390227
+            },
+            {
+              "depth": 23.5,
+              "elevation": -23.5,
+              "temperature": 26.640134979862097
+            },
+            {
+              "depth": 24,
+              "elevation": -24,
+              "temperature": 26.601351162046296
+            }
+          ],
+          "inputs": {
+            "waterLevel": -16,
+            "outdoor": 36,
+            "deep": 26,
+            "lengthScale": 8,
+            "solar": 0.6,
+            "solarGain": 4,
+            "hour": 14,
+            "waterTemperature": 25,
+            "sampleDepth": 12,
+            "maxDepth": 24,
+            "levelRate": 0,
+            "elapsedDays": 0
+          }
+        },
+        "b": {
+          "name": "Hot summer",
+          "modelVersion": "chand-empirical-1.0",
+          "provenance": "hypothetical inputs / simulated estimates",
+          "waterElevation_m": -16,
+          "waterColumn_m": 8,
+          "studyBottom_m": -24,
+          "volume_m3": null,
+          "surfaceArea_m2": null,
+          "volumeReason": "No surveyed basin geometry or elevation-volume curve is available.",
+          "surface_C": 46.86370330515627,
+          "sampled_C": 32.209061139471984,
+          "selectedDepth_m": 12,
+          "lower_C": 28.939168486124917,
+          "upperLowerDifference_C": 17.924534819031354,
+          "configuredWater_C": 25,
+          "waterAirDifference_C": -5.5529246296947505,
+          "profile": [
+            {
+              "depth": 0,
+              "elevation": 0,
+              "temperature": 46.86370330515627
+            },
+            {
+              "depth": 0.5,
+              "elevation": -0.5,
+              "temperature": 45.72080929790154
+            },
+            {
+              "depth": 1,
+              "elevation": -1,
+              "temperature": 44.6471597380752
+            },
+            {
+              "depth": 1.5,
+              "elevation": -1.5,
+              "temperature": 43.638559316690404
+            },
+            {
+              "depth": 2,
+              "elevation": -2,
+              "temperature": 42.69106690568235
+            },
+            {
+              "depth": 2.5,
+              "elevation": -2.5,
+              "temperature": 41.80098015786475
+            },
+            {
+              "depth": 3,
+              "elevation": -3,
+              "temperature": 40.96482103992773
+            },
+            {
+              "depth": 3.5,
+              "elevation": -3.5,
+              "temperature": 40.179322241947105
+            },
+            {
+              "depth": 4,
+              "elevation": -4,
+              "temperature": 39.441414410299814
+            },
+            {
+              "depth": 4.5,
+              "elevation": -4.5,
+              "temperature": 38.74821415409799
+            },
+            {
+              "depth": 5,
+              "elevation": -5,
+              "temperature": 38.097012778276344
+            },
+            {
+              "depth": 5.5,
+              "elevation": -5.5,
+              "temperature": 37.485265699307384
+            },
+            {
+              "depth": 6,
+              "elevation": -6,
+              "temperature": 36.91058250218595
+            },
+            {
+              "depth": 6.5,
+              "elevation": -6.5,
+              "temperature": 36.37071759983067
+            },
+            {
+              "depth": 7,
+              "elevation": -7,
+              "temperature": 35.863561458403595
+            },
+            {
+              "depth": 7.5,
+              "elevation": -7.5,
+              "temperature": 35.38713235426093
+            },
+            {
+              "depth": 8,
+              "elevation": -8,
+              "temperature": 34.93956863032478
+            },
+            {
+              "depth": 8.5,
+              "elevation": -8.5,
+              "temperature": 34.51912142161772
+            },
+            {
+              "depth": 9,
+              "elevation": -9,
+              "temperature": 34.12414782153484
+            },
+            {
+              "depth": 9.5,
+              "elevation": -9.5,
+              "temperature": 33.75310446215052
+            },
+            {
+              "depth": 10,
+              "elevation": -10,
+              "temperature": 33.404541483474695
+            },
+            {
+              "depth": 10.5,
+              "elevation": -10.5,
+              "temperature": 33.07709686809345
+            },
+            {
+              "depth": 11,
+              "elevation": -11,
+              "temperature": 32.76949111905637
+            },
+            {
+              "depth": 11.5,
+              "elevation": -11.5,
+              "temperature": 32.48052226021442
+            },
+            {
+              "depth": 12,
+              "elevation": -12,
+              "temperature": 32.209061139471984
+            },
+            {
+              "depth": 12.5,
+              "elevation": -12.5,
+              "temperature": 31.954047016600555
+            },
+            {
+              "depth": 13,
+              "elevation": -13,
+              "temperature": 31.714483418373213
+            },
+            {
+              "depth": 13.5,
+              "elevation": -13.5,
+              "temperature": 31.48943424482385
+            },
+            {
+              "depth": 14,
+              "elevation": -14,
+              "temperature": 31.2780201114162
+            },
+            {
+              "depth": 14.5,
+              "elevation": -14.5,
+              "temperature": 31.079414912829666
+            },
+            {
+              "depth": 15,
+              "elevation": -15,
+              "temperature": 30.89284259493481
+            },
+            {
+              "depth": 15.5,
+              "elevation": -15.5,
+              "temperature": 30.717574122344992
+            },
+            {
+              "depth": 16,
+              "elevation": -16,
+              "temperature": 30.55292462969475
+            },
+            {
+              "depth": 16.5,
+              "elevation": -16.5,
+              "temperature": 30.398250745513504
+            },
+            {
+              "depth": 17,
+              "elevation": -17,
+              "temperature": 30.252948078237544
+            },
+            {
+              "depth": 17.5,
+              "elevation": -17.5,
+              "temperature": 30.116448854536863
+            },
+            {
+              "depth": 18,
+              "elevation": -18,
+              "temperature": 29.98821970072855
+            },
+            {
+              "depth": 18.5,
+              "elevation": -18.5,
+              "temperature": 29.8677595586075
+            },
+            {
+              "depth": 19,
+              "elevation": -19,
+              "temperature": 29.754597727550614
+            },
+            {
+              "depth": 19.5,
+              "elevation": -19.5,
+              "temperature": 29.648292025243887
+            },
+            {
+              "depth": 20,
+              "elevation": -20,
+              "temperature": 29.548427059845388
+            },
+            {
+              "depth": 20.5,
+              "elevation": -20.5,
+              "temperature": 29.454612606832622
+            },
+            {
+              "depth": 21,
+              "elevation": -21,
+              "temperature": 29.366482084191727
+            },
+            {
+              "depth": 21.5,
+              "elevation": -21.5,
+              "temperature": 29.28369111999029
+            },
+            {
+              "depth": 22,
+              "elevation": -22,
+              "temperature": 29.20591620673654
+            },
+            {
+              "depth": 22.5,
+              "elevation": -22.5,
+              "temperature": 29.132853437266782
+            },
+            {
+              "depth": 23,
+              "elevation": -23,
+              "temperature": 29.064217317221562
+            },
+            {
+              "depth": 23.5,
+              "elevation": -23.5,
+              "temperature": 28.999739649470246
+            },
+            {
+              "depth": 24,
+              "elevation": -24,
+              "temperature": 28.939168486124917
+            }
+          ],
+          "inputs": {
+            "waterLevel": -16,
+            "outdoor": 43,
+            "deep": 28,
+            "lengthScale": 8,
+            "solar": 1,
+            "solarGain": 4,
+            "hour": 13,
+            "waterTemperature": 25,
+            "sampleDepth": 12,
+            "maxDepth": 24,
+            "levelRate": 0,
+            "elapsedDays": 0
+          }
+        },
+        "delta": {
+          "water_m": 0,
+          "outdoor_C": 7,
+          "selectedTemperature_C": 3.513992209094013,
+          "upperLowerDifference_C": 6.447425011994994
+        },
+        "note": "B minus A; each snapshot preserves its own sample depth and inputs."
+      },
+      "summary": "B − A: water 0.0 m · estimated air 3.5 °C. Compare sample depths.",
+      "changed": false
+    }
+  ],
+  "explanation": "The Hot summer scenario features higher outdoor temperatures and increased solar intensity compared to the Baseline study. While both scenarios maintain the same water elevation, the hotter conditions lead to higher estimated temperatures throughout the entire depth profile.",
+  "sources": [
+    {
+      "name": "Rajasthan Tourism · Chand Baori",
+      "url": "https://www.tourism.rajasthan.gov.in/content/rajasthan-tourism/en/tourist-destinations/chand-baori.html"
+    },
+    {
+      "name": "Ministry of Tourism · Abhaneri",
+      "url": "https://utsav.gov.in/view-event/abhaneri-festival-2"
+    },
+    {
+      "name": "siddharthbandhu · Chand Baori",
+      "url": "https://sketchfab.com/3d-models/chand-baori-0fec124478454f74be29a9bd3e5534b8"
+    },
+    {
+      "name": "Parmar & Mishra · Passive cooling in stepwells",
+      "url": "https://journal.hep.com.cn/foar/EN/10.1016/j.foar.2024.03.014"
+    },
+    {
+      "name": "Sharmin et al. · ICUC12 stepwell microclimate study",
+      "url": "https://meetingorganizer.copernicus.org/ICUC12/ICUC12-1020.html"
+    }
+  ]
+}

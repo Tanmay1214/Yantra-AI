@@ -521,6 +521,7 @@ summary::-webkit-details-marker {
   scrollbar-width: thin;
   scrollbar-color: #444e3c transparent;
 }
+.clock-guide-panel { padding: 26px; }
 .panel-intro,
 .inspector,
 .tour-panel,

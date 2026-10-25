@@ -1,0 +1,84 @@
+{
+  "provider": "Gemini API",
+  "realInference": true,
+  "complete": false,
+  "checkedAt": "2026-10-25T08:36:48.938Z",
+  "results": [
+    {
+      "question": "Lower the water by two metres.",
+      "seconds": 45.331,
+      "model": "gemma-4-31b-it",
+      "tools": [
+        {
+          "name": "get_simulation_state",
+          "args": {},
+          "summary": "Current water -16.0 m · outdoor 36.0 °C · user-configured inputs."
+        },
+        {
+          "name": "set_water_level",
+          "args": {
+            "level_m": -18
+          },
+          "summary": "Water elevation: -18.0 m · illustrative datum."
+        }
+      ],
+      "explanation": "The water level has been lowered by two metres to -18 m. The view has been updated to Water mode."
+    },
+    {
+      "question": "Show the estimated temperature at twelve metres depth.",
+      "seconds": 40.566,
+      "model": "gemma-4-31b-it",
+      "tools": [
+        {
+          "name": "get_simulation_state",
+          "args": {},
+          "summary": "Current water -18.0 m · outdoor 36.0 °C · user-configured inputs."
+        },
+        {
+          "name": "set_view_mode",
+          "args": {
+            "mode": "Temperature"
+          },
+          "summary": "View: Temperature."
+        },
+        {
+          "name": "set_environment_conditions",
+          "args": {
+            "sampleDepth": 12
+          },
+          "summary": "Conditions updated · outdoor 36.0 °C · observation 12.0 m."
+        },
+        {
+          "name": "sample_temperature",
+          "args": {
+            "depth_m": 12,
+            "location": "depth-column"
+          },
+          "summary": "12.0 m depth: 28.7 °C · simulated estimate."
+        }
+      ],
+      "explanation": "The estimated temperature at a\n depth of twelve metres is 28.7 °C. The view has been updated to Temperature mode."
+    },
+    {
+      "question": "Compare my two saved scenarios.",
+      "seconds": 81.88,
+      "model": "gemma-4-31b-it",
+      "tools": [
+        {
+          "name": "get_simulation_state",
+          "args": {},
+          "summary": "Current water -18.0 m · outdoor 36.0 °C · user-configured inputs."
+        },
+        {
+          "name": "compare_scenarios",
+          "args": {
+            "scenario_b": "9145f4e5-c797-4ef0-b5b0-b04a044cf9dd",
+            "scenario_a": "6e52c93f-3f09-4c1a-9666-c9b7012b7102"
+          },
+          "summary": "B − A: water 0.0 m · estimated air 3.5 °C. Compare sample depths."
+        }
+      ],
+      "explanation": "The verified results below show what the model returned. These explanatory simulations keep their assumptions visible."
+    }
+  ]
+}

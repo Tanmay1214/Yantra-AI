@@ -1,0 +1,57 @@
+{
+  "provider": "Gemini API",
+  "realInference": true,
+  "section": "well",
+  "complete": false,
+  "checkedAt": "2026-10-25T08:48:31.514Z",
+  "results": [
+    {
+      "question": "Lower the water by two metres.",
+      "seconds": 5.61,
+      "model": "gemma-4-26b-a4b-it",
+      "tools": [
+        {
+          "name": "get_simulation_state",
+          "args": {},
+          "summary": "Current water -16.0 m · outdoor 36.0 °C · user-configured inputs."
+        },
+        {
+          "name": "set_water_level",
+          "args": {
+            "level_m": -18
+          },
+          "summary": "Water elevation: -18.0 m · illustrative datum."
+        }
+      ],
+      "explanation": "I have lowered the water level. The water view is now active."
+    },
+    {
+      "question": "Show the estimated temperature at twelve metres depth.",
+      "seconds": 4.509,
+      "model": "gemma-4-26b-a4b-it",
+      "tools": [
+        {
+          "name": "get_simulation_state",
+          "args": {},
+          "summary": "Current water -18.0 m · outdoor 36.0 °C · user-configured inputs."
+        },
+        {
+          "name": "set_view_mode",
+          "args": {
+            "mode": "Temperature"
+          },
+          "summary": "View: Temperature."
+        },
+        {
+          "name": "sample_temperature",
+          "args": {
+            "location": "depth-column",
+            "depth_m": 12
+          },
+          "summary": "12.0 m depth: 28.7 °C · simulated estimate."
+        }
+      ],
+      "explanation": "The estimated temperature at a depth of twelve metres is shown on the temperature view."
+    }
+  ]
+}
