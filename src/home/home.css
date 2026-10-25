@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Libre+Caslon+Display&display=swap");
+
+:root { font-family: "DM Sans", Arial, sans-serif; color: #e9e7db; background: #19211e; font-synthesis: none; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+.archive-page { --archive-gold: #c8b17d; --archive-muted: #a2ada2; --archive-line: #d4ddca26; font-size: 13px; }
+.archive-page a { color: inherit; text-decoration: none; }
+.archive-page h1, .archive-page h2, .archive-page h3, .archive-page p { margin: 0; font-weight: 400; }
+.archive-page a:focus-visible { outline: 2px solid var(--archive-gold); outline-offset: 7px; }
+.archive-page a:hover { color: #e2c68e; }
+.archive-skip { position: fixed; left: 20px; top: -100px; z-index: 20; padding: 14px; background: #ebe6d9; color: #18221e !important; }
+.archive-skip:focus { top: 12px; }
+.archive-header { margin: 0 4.2%; min-height: 100px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--archive-line); gap: 25px; }
+.archive-wordmark { display: flex; align-items: center; gap: 14px; font-family: "Libre Caslon Display", Georgia, serif; font-size: 25px; line-height: .92; }
+.archive-wordmark > span { max-width: 117px; }
+.archive-mark { color: var(--archive-gold); }
+.archive-header-note { font-size: 9px; letter-spacing: 2px; color: var(--archive-muted); margin-left: 6%; }
+.archive-header nav { display: flex; gap: 32px; font-size: 12px; }
+.archive-header nav a { display: flex; gap: 10px; align-items: center; }
+.archive-header nav span { color: var(--archive-gold); font-size: 9px; }
+.archive-introduction { padding: 64px 4.2% 61px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 8%; align-items: end; }
+.archive-kicker { font-size: 9px; font-weight: 500 !important; letter-spacing: 1.9px; color: var(--archive-gold); line-height: 1.5; }
+.archive-introduction h1 { font-family: "Libre Caslon Display", Georgia, serif; font-size: clamp(72px, 8.4vw, 132px); letter-spacing: -3px; line-height: .95; margin-top: 23px; }
+.archive-introduction h1 em { font-family: Georgia, serif; font-size: .85em; color: #c8b17d; font-weight: 400; }
+.archive-intro-note { padding: 0 8% 5px 8%; max-width: 470px; }
+.archive-small-rule { display: block; width: 35px; height: 1px; background: var(--archive-gold); margin-bottom: 24px; }
+.archive-intro-note > p:first-of-type { font-size: 18px; line-height: 1.6; }
+.archive-intro-note .archive-muted { color: var(--archive-muted); margin-top: 14px; line-height: 1.8; font-size: 12px; }
+.archive-text-link { display: inline-flex; align-items: center; gap: 27px; font-size: 12px; padding-bottom: 8px; border-bottom: 1px solid #c8b17d70; margin-top: 24px; }
+.archive-text-link svg { color: var(--archive-gold); }
+.archive-collection { padding: 0 4.2% 90px; scroll-margin-top: 24px; }
+.archive-section-heading { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; border-top: 1px solid var(--archive-line); }
+.archive-section-heading h2 { font-size: 11px; }
+.archive-section-heading p { font-size: 8px; color: var(--archive-muted); letter-spacing: 1.7px; display: flex; align-items: center; gap: 22px; }
+.archive-section-heading p span { font-size: 18px; color: var(--archive-gold); }
+.archive-exhibits { display: grid; grid-template-columns: .83fr 1.17fr; gap: 28px; }
+.archive-exhibit { min-width: 0; }
+.archive-preview { position: relative; height: clamp(350px, 34vw, 540px); overflow: hidden; background: #1c211e; border: 1px solid #d4ddca17; cursor: grab; }
+.archive-preview:active { cursor: grabbing; }
+.archive-preview-clock { background: #1a201c; }
+.archive-preview-meta { position: absolute; top: 22px; left: 23px; right: 23px; display: flex; justify-content: space-between; color: #a9b0a1; font-size: 8px; letter-spacing: 1.35px; z-index: 2; pointer-events: none; }
+.archive-preview-meta span:first-child { color: var(--archive-gold); }
+.archive-model { width: 100%; height: 100%; }
+.archive-orbit-note { position: absolute; bottom: 20px; left: 23px; font-size: 9px; color: #b4b9a7; display: flex; align-items: center; gap: 8px; pointer-events: none; text-shadow: 0 1px 3px #000; }
+.archive-orbit-note > span { font-size: 17px; }
+.archive-specimen { position: absolute; bottom: 22px; right: 23px; color: #b5bba8; font-size: 8px; letter-spacing: 1.2px; pointer-events: none; }
+.archive-loading { position: absolute; top: 50%; left: 12%; width: 76%; text-align: center; color: var(--archive-muted); font-size: 12px; line-height: 1.7; transform: translateY(-50%); }
+.archive-exhibit-caption { display: flex; justify-content: space-between; gap: 20px; padding-top: 27px; }
+.archive-exhibit-caption .archive-kicker { font-size: 8px; letter-spacing: 1.5px; }
+.archive-exhibit-caption h3 { font-family: "Libre Caslon Display", Georgia, serif; font-size: clamp(42px, 4vw, 62px); line-height: 1.05; margin: 10px 0 13px; letter-spacing: -.5px; }
+.archive-exhibit-caption h3 a:hover { color: var(--archive-gold); }
+.archive-exhibit-caption p:last-child { font-size: 15px; line-height: 1.5; color: #d6d9cb; }
+.archive-entry { display: flex; flex-direction: column; align-items: center; gap: 12px; align-self: center; white-space: nowrap; }
+.archive-entry svg { width: 51px; height: 51px; border: 1px solid #c8b17d55; border-radius: 50%; padding: 14px; transition: background .2s, transform .2s; }
+.archive-entry:hover svg { transform: translate(2px, -2px); background: #c8b17d12; }
+.archive-entry span { font-size: 10px; }
+.archive-exhibit-detail { max-width: 440px; font-size: 12px; line-height: 1.8; color: var(--archive-muted); margin-top: 22px !important; min-height: 66px; }
+.archive-exhibit-footer { display: flex; justify-content: space-between; border-top: 1px solid var(--archive-line); padding-top: 15px; margin-top: 22px; font-size: 8px; color: #98a18f; letter-spacing: 1.4px; }
+.archive-exhibit-footer span:last-child { color: var(--archive-gold); }
+.archive-approach { background: #e5e0d3; color: #27332a; display: grid; grid-template-columns: 1fr 1fr; gap: 12%; padding: 76px 7% 70px; scroll-margin-top: 20px; }
+.archive-approach .archive-kicker { color: #6d6551; }
+.archive-approach-intro h2 { font-family: "Libre Caslon Display", Georgia, serif; font-size: clamp(48px, 5vw, 74px); line-height: 1; letter-spacing: -1px; margin-top: 22px; }
+.archive-approach-intro > p:last-of-type { font-size: 13px; line-height: 1.9; color: #596252; max-width: 330px; margin-top: 24px; }
+.archive-approach-symbol { font-family: Georgia, serif; font-size: 66px; color: #8b7957; display: block; margin-top: 26px; line-height: 1; }
+.archive-principles > div { display: flex; gap: 25px; padding: 25px 0; border-top: 1px solid #27332a30; }
+.archive-principles > div > span { font-size: 10px; color: #766d57; padding-top: 7px; }
+.archive-principles h3 { font-family: "Libre Caslon Display", Georgia, serif; font-size: 28px; line-height: 1.25; }
+.archive-principles p { font-size: 12px; color: #596252; line-height: 1.9; margin-top: 11px; }
+.archive-reading { display: grid; grid-template-columns: .7fr 1.35fr 1fr; gap: 35px; padding: 65px 4.2%; border-bottom: 1px solid var(--archive-line); }
+.archive-reading > p:nth-child(2) { font-family: "Libre Caslon Display", Georgia, serif; font-size: 28px; line-height: 1.3; }
+.archive-reading > p:nth-child(2) span { font-family: "DM Sans", Arial, sans-serif; font-size: 11px; color: var(--archive-muted); display: block; margin-top: 14px; max-width: 300px; line-height: 1.8; }
+.archive-reading > div { display: grid; gap: 22px; }
+.archive-reading a { display: grid; grid-template-columns: 1fr auto; border-bottom: 1px solid var(--archive-line); padding-bottom: 12px; font-size: 12px; }
+.archive-reading small { grid-column: 1 / -1; margin-top: 5px; font-size: 9px; color: var(--archive-muted); }
+.archive-reading a svg { color: var(--archive-gold); }
+.archive-footer { padding: 36px 4.2%; display: grid; grid-template-columns: 1.1fr .9fr 1.5fr; gap: 25px; align-items: start; }
+.archive-footer-name { font-family: "Libre Caslon Display", Georgia, serif; font-size: 25px; }
+.archive-footer-name span { display: block; font-family: "DM Sans", Arial, sans-serif; font-size: 9px; color: var(--archive-muted); margin-top: 9px; }
+.archive-footer > div { display: flex; flex-direction: column; gap: 13px; font-size: 11px; }
+.archive-footer > div a { display: flex; align-items: center; gap: 12px; }
+.archive-footer > p { font-size: 9px; line-height: 1.9; color: #a0aa9b; text-align: right; }
+.archive-footer > p a { text-decoration: underline; text-underline-offset: 3px; }
+.archive-not-found { min-height: 65vh; padding: 90px 7%; }
+.archive-not-found h1 { font: 64px/1.1 "Libre Caslon Display", Georgia, serif; margin: 24px 0; }
+@media (min-width: 1600px) { .archive-page { max-width: 1800px; margin: auto; } }
+@media (max-width: 1000px) {
+  .archive-header-note { display: none; }
+  .archive-introduction { gap: 30px; grid-template-columns: 1.25fr 1fr; padding-top: 55px; }
+  .archive-intro-note { padding: 0; }
+  .archive-intro-note > p:first-of-type { font-size: 15px; }
+  .archive-preview { height: 370px; }
+  .archive-exhibits { gap: 22px; grid-template-columns: .9fr 1.1fr; }
+  .archive-preview-meta { left: 16px; right: 16px; }
+  .archive-preview-meta span:last-child { display: none; }
+  .archive-exhibit-caption { gap: 10px; }
+  .archive-exhibit-caption p:last-child { font-size: 13px; }
+  .archive-entry svg { width: 43px; height: 43px; padding: 12px; }
+  .archive-approach { gap: 7%; padding: 55px 5%; }
+  .archive-reading { grid-template-columns: 1fr 1fr; }
+  .archive-reading > .archive-kicker { grid-column: 1 / -1; }
+}
+@media (max-width: 640px) {
+  .archive-header { min-height: 83px; margin: 0 6%; gap: 10px; }
+  .archive-wordmark { font-size: 22px; gap: 10px; }
+  .archive-mark { width: 29px; }
+  .archive-header nav { gap: 17px; font-size: 10px; }
+  .archive-header nav a:last-child { display: none; }
+  .archive-introduction { padding: 45px 6% 36px; display: block; }
+  .archive-kicker { font-size: 8px; letter-spacing: 1.4px; }
+  .archive-introduction h1 { font-size: clamp(64px, 13vw, 83px); letter-spacing: -1.7px; margin-top: 20px; }
+  .archive-intro-note { margin-top: 28px; max-width: 360px; }
+  .archive-small-rule { display: none; }
+  .archive-intro-note > p:first-of-type { font-size: 15px; max-width: 320px; }
+  .archive-intro-note .archive-muted { font-size: 11px; }
+  .archive-text-link { margin-top: 18px; font-size: 11px; }
+  .archive-collection { padding: 0 6% 50px; }
+  .archive-section-heading { padding: 15px 0; }
+  .archive-section-heading p { font-size: 7px; letter-spacing: .8px; gap: 10px; }
+  .archive-section-heading p span { display: none; }
+  .archive-exhibits { display: flex; flex-direction: column; gap: 43px; }
+  .archive-preview { height: 390px; }
+  .archive-preview-well { height: 340px; }
+  .archive-preview-meta { top: 18px; }
+  .archive-preview-meta span:last-child { display: inline; font-size: 7px; }
+  .archive-exhibit-caption { padding-top: 23px; }
+  .archive-exhibit-caption h3 { font-size: 46px; }
+  .archive-exhibit-caption p:last-child { font-size: 14px; }
+  .archive-exhibit-detail { min-height: 0; font-size: 11px; margin-top: 18px !important; }
+  .archive-exhibit-footer { margin-top: 18px; font-size: 7px; letter-spacing: .8px; }
+  .archive-entry svg { width: 48px; height: 48px; padding: 13px; }
+  .archive-approach { display: block; padding: 45px 6% 26px; }
+  .archive-approach-intro h2 { font-size: 51px; }
+  .archive-approach-intro > p:last-of-type { font-size: 12px; }
+  .archive-approach-symbol { display: none; }
+  .archive-principles { margin-top: 35px; }
+  .archive-principles h3 { font-size: 25px; }
+  .archive-principles p { font-size: 11px; }
+  .archive-reading { padding: 38px 6%; display: block; }
+  .archive-reading > p:nth-child(2) { margin-top: 20px; font-size: 27px; }
+  .archive-reading > div { margin-top: 28px; }
+  .archive-footer { padding: 30px 6%; grid-template-columns: 1.1fr 1fr; }
+  .archive-footer > p { grid-column: 1 / -1; text-align: left; margin-top: 6px; font-size: 8px; }
+  .archive-not-found h1 { font-size: 47px; }
+}
+@media (prefers-reduced-motion: reduce) { .archive-page * { transition: none !important; } }

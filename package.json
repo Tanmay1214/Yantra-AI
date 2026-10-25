@@ -1,0 +1,33 @@
+{
+  "name": "wadokei-exhibit",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "agent": "node --import tsx server/heritage-server.ts",
+    "build": "tsc -b && tsc -p tsconfig.server.json && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "node --import tsx --test tests/simulation.test.ts tests/environment.test.ts",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.7.4",
+    "@react-three/fiber": "^9.3.0",
+    "lucide-react": "^0.468.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "three": "^0.179.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^22.20.5",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "@types/three": "^0.179.0",
+    "@vitejs/plugin-react": "^4.7.0",
+    "tsx": "^4.20.5",
+    "typescript": "~5.7.3",
+    "vite": "^6.4.1"
+  }
+}

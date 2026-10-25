@@ -1,0 +1,4 @@
+# Preserve downloaded model and archive bytes, including original line endings.
+/public/models/** -text
+/reference/*.zip -text
+*.png binary

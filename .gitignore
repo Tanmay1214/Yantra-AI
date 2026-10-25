@@ -1,0 +1,22 @@
+node_modules/
+dist/
+test-results/
+playwright-report/
+*.tsbuildinfo
+
+# Machine-local settings and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.log
+.DS_Store
+Thumbs.db
+
+# Unrelated local folder and research images without redistribution rights
+/New folder/
+/reference/jcwa-single-foliot.jpg
+/reference/sketchfab-preview.jpg
