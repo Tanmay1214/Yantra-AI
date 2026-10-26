@@ -33,8 +33,6 @@ The aim is to support students, visitors, and researchers in examining an interp
 
 Historical text → source-backed interpretation → possible 3D reconstruction → questions and experiments → revised understanding
 
-## Hardware Integration: Manuscript Capture at the Edge
-
 YANTRA is designed to extend beyond the browser through a **Raspberry Pi– and camera-based manuscript-capture interface**, planned as the physical entry point to our historical text-to-3D workflow.
 
 The interface is designed around the target board's hardware constraints, with the goal of capturing physical manuscripts and inscriptions and bringing their content into YANTRA's digital heritage experience.
