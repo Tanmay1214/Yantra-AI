@@ -33,6 +33,20 @@ The aim is to support students, visitors, and researchers in examining an interp
 
 Historical text → source-backed interpretation → possible 3D reconstruction → questions and experiments → revised understanding
 
+## Hardware Integration: Manuscript Capture at the Edge
+
+YANTRA is designed to extend beyond the browser through a **Raspberry Pi– and camera-based manuscript-capture interface**, planned as the physical entry point to our historical text-to-3D workflow.
+
+The interface is designed around the target board's hardware constraints, with the goal of capturing physical manuscripts and inscriptions and bringing their content into YANTRA's digital heritage experience.
+
+This creates a bridge between physical historical sources and AI-assisted exploration:
+
+**Physical manuscript → image capture → text and evidence → interpretation → explorable 3D**
+
+Gemma 4 powers the conversational layer, helping users investigate interpretations, interact with supported simulations, and understand results. The longer-term vision is to connect captured source material to reconstructions that people can inspect, question, and compare against the original evidence.
+
+The current prototype demonstrates the interactive 3D exhibits and AI-guided experimentation. The Raspberry Pi interface is designed as the hardware extension of that workflow, while automatic manuscript-to-3D generation remains future work.
+
 ## What you can try today
 
 The current prototype uses **two prepared 3D exhibits**. Automatic manuscript-to-3D generation is the next step; it is not implemented in this version.
